@@ -1,4 +1,4 @@
-module 11-go-gin-example
+module github.com/huanggengzhong/go-gin-example
 
 go 1.19
 
@@ -29,4 +29,12 @@ require (
 	golang.org/x/text v0.10.0 // indirect
 	google.golang.org/protobuf v1.30.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
+)
+
+replace (
+	github.com/huanggengzhong/go-gin-example/pkg/setting => ~/Documents/study/01-go-learn/11-go-gin-example/pkg/setting
+	github.com/huanggengzhong/go-gin-example/conf => ~/Documents/study/01-go-learn/11-go-gin-example/conf
+	github.com/huanggengzhong/go-gin-example/routers => ~/Documents/study/01-go-learn/11-go-gin-example/routers
+	github.com/huanggengzhong/go-gin-example/middleware => ~/Documents/study/01-go-learn/11-go-gin-example/middleware
+	github.com/huanggengzhong/go-gin-example/models => ~/Documents/study/01-go-learn/11-go-gin-example/models
 )
