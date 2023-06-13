@@ -4,17 +4,12 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/gin-gonic/gin"
 	"github.com/huanggengzhong/go-gin-example/pkg/setting"
+	"github.com/huanggengzhong/go-gin-example/routers"
 )
 
 func main() {
-	router := gin.Default()
-	router.GET("/test", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "成功",
-		})
-	})
+	router := routers.InitRouter()
 	s := &http.Server{
 		Addr:           fmt.Sprintf(":%d", setting.HTTPPort),
 		Handler:        router,
