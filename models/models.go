@@ -9,6 +9,14 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
+var db *gorm.DB
+
+type Model struct {
+	ID         int `gorm:"primary_key" json:"id"`
+	CreatedOn  int `json:"created_on"`
+	ModifiedOn int `json:"modified_on"`
+}
+
 func init() {
 	var (
 		err                                               error
@@ -26,7 +34,12 @@ func init() {
 	password = sec.Key("PASSWORD").String()
 	host = sec.Key("HOST").String()
 	tablePrefix = sec.Key("TABLE_PREFIX").String()
-	db, err := gorm.Open(dbType, fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True&loc=Local",
+	// 记得不需要:
+	// 原因:
+	// 这导致了一个新的db变量被创建，而不是更新外部作用域中的全局db变量。因此，在CloseDB()函数中使用的db实际上是一个不同的未初始化变量。要修复这个问题，你需要将:=替换为=，以便使用全局的db变量进行赋值：
+
+	// db, err := gorm.Open(dbType, fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True&loc=Local",
+	db, err = gorm.Open(dbType, fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True&loc=Local",
 		user,
 		password,
 		host,
