@@ -1,7 +1,9 @@
 package routers
 
 import (
+	"github.com/huanggengzhong/go-gin-example/middleware/jwt"
 	"github.com/huanggengzhong/go-gin-example/pkg/setting"
+	"github.com/huanggengzhong/go-gin-example/routers/api"
 	v1 "github.com/huanggengzhong/go-gin-example/routers/api/v1"
 
 	"github.com/gin-gonic/gin"
@@ -17,8 +19,14 @@ func InitRouter() *gin.Engine {
 			"message": "成功",
 		})
 	})
+
+	//获取token
+	r.GET("/auth", api.GetAuth)
 	// 路由分组
 	apiv1 := r.Group("/api/v1")
+
+	//token验证
+	apiv1.Use(jwt.JWT())
 	{
 		// 标签路由组
 		apiv1.GET("/tags", v1.GetTags)
