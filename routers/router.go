@@ -2,17 +2,28 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
-	_ "github.com/huanggengzhong/go-gin-example/docs"
+
+	docs "github.com/huanggengzhong/go-gin-example/docs"
+
 	"github.com/huanggengzhong/go-gin-example/middleware/jwt"
 	"github.com/huanggengzhong/go-gin-example/pkg/setting"
 	"github.com/huanggengzhong/go-gin-example/routers/api"
 	v1 "github.com/huanggengzhong/go-gin-example/routers/api/v1"
+	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
 func InitRouter() *gin.Engine {
+	// // programatically set swagger info
+	// programatically set swagger info
+	docs.SwaggerInfo.Title = "Swagger Example API"
+	docs.SwaggerInfo.Description = "This is a sample server Petstore server."
+	docs.SwaggerInfo.Version = "1.0"
+	docs.SwaggerInfo.Host = "petstore.swagger.io"
+	docs.SwaggerInfo.BasePath = "/v2"
+	docs.SwaggerInfo.Schemes = []string{"http", "https"}
 	r := gin.New()
+
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
 	gin.SetMode(setting.RunMode)
@@ -21,10 +32,9 @@ func InitRouter() *gin.Engine {
 			"message": "成功",
 		})
 	})
-	//swag
-	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	//获取token
 	r.GET("/auth", api.GetAuth)
+
 	// 路由分组
 	apiv1 := r.Group("/api/v1")
 
@@ -43,5 +53,8 @@ func InitRouter() *gin.Engine {
 		apiv1.PUT("/articles/:id", v1.EditArticle)
 		apiv1.DELETE("/articles/:id", v1.DeleteArticle)
 	}
+	//swag
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
 	return r
 }

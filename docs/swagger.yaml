@@ -1,4 +1,35 @@
 info:
   contact: {}
-paths: {}
+paths:
+  /api/v1/tags:
+    post:
+      consumes:
+      - application/json
+      description: 新增标签
+      parameters:
+      - description: 标签名
+        in: path
+        name: name
+        required: true
+        type: string
+      - description: 状态
+        in: path
+        name: state
+        required: true
+        type: integer
+      - description: 创建人
+        in: path
+        name: createdBy
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{},"msg":"ok"}'
+          schema:
+            type: string
+      summary: 新增
+      tags:
+      - 标签接口
 swagger: "2.0"
