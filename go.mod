@@ -46,5 +46,7 @@ replace (
 	github.com/huanggengzhong/go-gin-example/pkg/e => /Users/luogengzhong/Documents/study/01-go-learn/11-go-gin-example/pkg/e
 	github.com/huanggengzhong/go-gin-example/pkg/setting => /Users/luogengzhong/Documents/study/01-go-learn/11-go-gin-example/pkg/setting
 	github.com/huanggengzhong/go-gin-example/pkg/util => /Users/luogengzhong/Documents/study/01-go-learn/11-go-gin-example/pkg/util
+	github.com/huanggengzhong/go-gin-example/pkg/logging => /Users/luogengzhong/Documents/study/01-go-learn/11-go-gin-example/pkg/logging
+
 	github.com/huanggengzhong/go-gin-example/routers => /Users/luogengzhong/Documents/study/01-go-learn/11-go-gin-example/routers
 )

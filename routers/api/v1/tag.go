@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/huanggengzhong/go-gin-example/models"
 	"github.com/huanggengzhong/go-gin-example/pkg/e"
+	"github.com/huanggengzhong/go-gin-example/pkg/logging"
 	"github.com/huanggengzhong/go-gin-example/pkg/setting"
 	"github.com/huanggengzhong/go-gin-example/pkg/util"
 	"github.com/unknwon/com"
@@ -57,6 +58,11 @@ func AddTag(c *gin.Context) {
 		} else {
 			code = e.ERROR_EXIST_TAG
 		}
+	} else {
+		for _, err := range valid.Errors {
+			// log.Printf("err.key是:%s,err.message是:%s", err.Key, err.Message)
+			logging.Info(err.Key, err.Message)
+		}
 	}
 	c.JSON(http.StatusOK, gin.H{
 		"code": code,
@@ -100,6 +106,11 @@ func EditTag(c *gin.Context) {
 		} else {
 			code = e.ERROR_EXIST_TAG
 		}
+	} else {
+		for _, err := range valid.Errors {
+			// log.Printf("err.key是:%s,err.message是:%s", err.Key, err.Message)
+			logging.Info(err.Key, err.Message)
+		}
 	}
 	c.JSON(http.StatusOK, gin.H{
 		"code": code,
@@ -119,6 +130,11 @@ func DeleteTag(c *gin.Context) {
 			models.DeleteTag(id)
 		} else {
 			code = e.ERROR_NOT_EXIST_TAG
+		}
+	} else {
+		for _, err := range valid.Errors {
+			// log.Printf("err.key是:%s,err.message是:%s", err.Key, err.Message)
+			logging.Info(err.Key, err.Message)
 		}
 	}
 	c.JSON(http.StatusOK, gin.H{
