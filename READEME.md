@@ -60,6 +60,9 @@ docker ps -as
 删除影像
 docker rm 影像name
 
+启动/停止 影像
+docker start/stop 影像NAMES
+
 
 查看文件夹路径
 pwd
