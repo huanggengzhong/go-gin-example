@@ -34,19 +34,30 @@ go install github.com/swaggo/swag/cmd/swag@v1.6.5
 
 
 ```
-docker 数据库登录 密码rootroot
 
-```js
-docker exec -it mysql mysql -uroot -p
-```
 docker数据库挂载
 ```js
 docker pull mysql
 docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=rootroot -v /Users/luogengzhong/go/src/github.com/huanggengzhong/go-gin-example/data/docker-mysql:/var/lib/mysql -d mysql
 ```
+docker 数据库登录 密码rootroot
+
+ 远程服务器执行的命令是:
+ ```js
+ docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=admin123 -v /root/mydata/docker-mysql:/var/lib/mysql -d mysql
+ ```
+```js
+ 登录数据库后,记得执行创建数据库和表命令
+
+
+docker exec -it mysql mysql -uroot -p
+```
 
 docker 项目镜像
 ```js
+//先创建Dokerfile文件
+//根目录下执行构建镜像 创建后查看docker images
+docker build -t gin-blog-docker .
 CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o go-gin-example .
 docker build -t gin-blog-docker-scratch .
 docker run --link mysql:mysql -p 8000:8000 gin-blog-docker-scratch
