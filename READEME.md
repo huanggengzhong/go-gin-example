@@ -34,3 +34,13 @@ go install github.com/swaggo/swag/cmd/swag@v1.6.5
 
 
 ```
+docker 数据库查看 密码rootroot
+
+```js
+docker exec -it mysql mysql -uroot -p
+```
+
+docker 运行命令
+```js
+docker run --link mysql:mysql -p 8000:8000 gin-blog-docker
+```
