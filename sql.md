@@ -14,6 +14,8 @@ CREATE DATABASE blog CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 ```
 
+
+
 创建标签表
 ```go
 CREATE TABLE `blog_tag`(
