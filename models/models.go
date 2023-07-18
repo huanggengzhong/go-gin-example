@@ -53,10 +53,10 @@ func init() {
 		return tablePrefix + defaultTableName
 	}
 	db.SingularTable(true)
-	//todo
+	//todo callback
 	db.Callback().Create().Replace("gorm:update_time_stamp", updateTimeStampForCreateCallback)
 	db.Callback().Update().Replace("gorm:update_time_stamp", updateTimeStampForUpdateCallback)
-
+	db.Callback().Delete().Replace("gorm:delete", deleteCallback)
 	db.LogMode(true)
 	db.DB().SetMaxIdleConns(10)
 	db.DB().SetMaxOpenConns(10)
@@ -109,11 +109,28 @@ func deleteCallback(scope *gorm.Scope) {
 		}
 		deletedOnField, hasDeletedOnFied := scope.FieldByName("DeletedOn")
 		if !scope.Search.Unscoped && hasDeletedOnFied {
-			// todo
-			// scope.Raw(fmt.Sprintf(
-			// 	"UPDATE %"
-
-			// ))
+			scope.Raw(fmt.Sprintf(
+				"UPDATE %v set %v=%v%v%v",
+				scope.QuotedTableName(),
+				scope.Quote(deletedOnField.DBName),
+				scope.AddToVars(time.Now().Unix()),
+				addExtraSpaceIfExist(scope.CombinedConditionSql()),
+				addExtraSpaceIfExist(extraOption),
+			)).Exec()
+		} else {
+			scope.Raw(fmt.Sprintf(
+				"DELETE FROM %v%v%v",
+				scope.QuotedTableName(),
+				addExtraSpaceIfExist(scope.CombinedConditionSql()),
+				addExtraSpaceIfExist(extraOption),
+			))
 		}
 	}
+}
+
+func addExtraSpaceIfExist(str string) string {
+	if str != "" {
+		return " " + str
+	}
+	return ""
 }
