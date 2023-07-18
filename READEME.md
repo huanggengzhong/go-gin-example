@@ -59,3 +59,7 @@ docker ps -as
 
 删除影像
 docker rm 影像name
+
+
+查看文件夹路径
+pwd
