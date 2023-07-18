@@ -38,7 +38,7 @@ go install github.com/swaggo/swag/cmd/swag@v1.6.5
 docker数据库挂载
 ```js
 docker pull mysql
-docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=rootroot -v /Users/luogengzhong/go/src/github.com/huanggengzhong/go-gin-example/data/docker-mysql:/var/lib/mysql -d mysql
+docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=admin123 -v /Users/luogengzhong/Documents/study/docker-mysql:/var/lib/mysql -d mysql
 ```
 docker 数据库登录 密码rootroot
 
