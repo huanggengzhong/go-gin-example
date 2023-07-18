@@ -13,6 +13,17 @@ import (
 	"github.com/unknwon/com"
 )
 
+// ShowAccount godoc
+//
+//	@Summary		列表
+//	@Description	获取标签列表
+//	@Tags			标签接口
+//	@Accept			json
+//	@Produce		json
+//	@Param			name	path		string	false	"标签名"
+//	@Param			state	path		int	false	"状态"
+//	@Success		200 {string} json "{"code":200,"data":{},"msg":"ok"}"
+//	@Router			/api/v1/tags [get]
 func GetTags(c *gin.Context) {
 	name := c.Query("name")
 

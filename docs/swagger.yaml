@@ -2,6 +2,29 @@ info:
   contact: {}
 paths:
   /api/v1/tags:
+    get:
+      consumes:
+      - application/json
+      description: 获取标签列表
+      parameters:
+      - description: 标签名
+        in: path
+        name: name
+        type: string
+      - description: 状态
+        in: path
+        name: state
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{},"msg":"ok"}'
+          schema:
+            type: string
+      summary: 列表
+      tags:
+      - 标签接口
     post:
       consumes:
       - application/json
