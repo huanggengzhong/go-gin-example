@@ -19,8 +19,8 @@ var (
 
 func init() {
 	var err error
-	// Cfg, err = ini.Load("conf/development.ini")
-	Cfg, err = ini.Load("conf/app.ini")
+	Cfg, err = ini.Load("conf/development.ini")
+	// Cfg, err = ini.Load("conf/app.ini")
 	if err != nil {
 		log.Fatalf("导入'config/app.ini'失败:%v", err)
 	}

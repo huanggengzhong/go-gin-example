@@ -1,6 +1,32 @@
 info:
   contact: {}
 paths:
+  /api/v1/auth:
+    get:
+      consumes:
+      - application/json
+      description: 获取token
+      parameters:
+      - description: 用户名
+        in: path
+        name: username
+        required: true
+        type: string
+      - description: 密码
+        in: path
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{"token":"xx"},"msg":"ok"}'
+          schema:
+            type: string
+      summary: 登录
+      tags:
+      - 用户
   /api/v1/tags:
     get:
       consumes:
@@ -42,7 +68,7 @@ paths:
         type: integer
       - description: 创建人
         in: path
-        name: createdBy
+        name: created_by
         required: true
         type: string
       produces:
@@ -54,5 +80,36 @@ paths:
             type: string
       summary: 新增
       tags:
-      - 标签接口
+      - 标签
+  /api/v1/tags/:id:
+    put:
+      consumes:
+      - application/json
+      description: 编辑标签
+      parameters:
+      - description: 标签名
+        in: path
+        name: name
+        required: true
+        type: string
+      - description: 状态
+        in: path
+        name: state
+        required: true
+        type: integer
+      - description: 修改人
+        in: path
+        name: modified_by
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{},"msg":"ok"}'
+          schema:
+            type: string
+      summary: 编辑
+      tags:
+      - 标签
 swagger: "2.0"

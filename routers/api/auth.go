@@ -16,12 +16,27 @@ type auth struct {
 	Password string `valid:Required;MaxSize(50)`
 }
 
+// ShowAccount godoc
+//
+//	@Summary		登录
+//	@Description	获取token
+//	@Tags			用户
+//	@Accept			json
+//	@Produce		json
+//	@Param			username	path		string	true	"用户名"
+//	@Param			password	path		string	true	"密码"
+//	@Success		200 {string} json "{"code":200,"data":{"token":"xx"},"msg":"ok"}"
+//	@Router			/api/v1/auth [get]
 func GetAuth(c *gin.Context) {
 	username := c.Query("username")
 	password := c.Query("password")
 	data := make(map[string]interface{})
 	code := e.INVALID_PARAMS
 	valid := validation.Validation{}
+
+	// 校验
+	valid.Required(username, "username").Message("用户名不能为空")
+	valid.Required(password, "password").Message("密码不能为空")
 
 	a := auth{Username: username, Password: password}
 

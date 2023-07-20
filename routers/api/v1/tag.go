@@ -54,12 +54,12 @@ func GetTags(c *gin.Context) {
 //
 //	@Summary		新增
 //	@Description	新增标签
-//	@Tags			标签接口
+//	@Tags			标签
 //	@Accept			json
 //	@Produce		json
 //	@Param			name	path		string	true	"标签名"
 //	@Param			state	path		int	true	"状态"
-//	@Param			createdBy	path		string	true	"创建人"
+//	@Param			created_by	path		string	true	"创建人"
 //	@Success		200 {string} json "{"code":200,"data":{},"msg":"ok"}"
 //	@Router			/api/v1/tags [post]
 func AddTag(c *gin.Context) {
@@ -96,6 +96,18 @@ func AddTag(c *gin.Context) {
 
 }
 
+// ShowAccount godoc
+//
+//	@Summary		编辑
+//	@Description	编辑标签
+//	@Tags			标签
+//	@Accept			json
+//	@Produce		json
+//	@Param			name	path		string	true	"标签名"
+//	@Param			state	path		int	true	"状态"
+//	@Param			modified_by	path		string	true	"修改人"
+//	@Success		200 {string} json "{"code":200,"data":{},"msg":"ok"}"
+//	@Router			/api/v1/tags/:id [put]
 func EditTag(c *gin.Context) {
 	id := com.StrTo(c.Param("id")).MustInt()
 	name := c.Query("name")
