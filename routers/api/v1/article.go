@@ -13,6 +13,15 @@ import (
 	"github.com/unknwon/com"
 )
 
+// ShowAccount godoc
+//
+//	@Summary		详情
+//	@Description	文章详情
+//	@Tags			文章
+//	@Accept			json
+//	@Produce		json
+//	@Success		200 {string} json "{"code":200,"data":{},"msg":"ok"}"
+//	@Router			/api/v1/articles/:id [get]
 func GetArticle(c *gin.Context) {
 	id := com.StrTo(c.Param("id")).MustInt()
 
@@ -40,6 +49,19 @@ func GetArticle(c *gin.Context) {
 		"data": data,
 	})
 }
+
+// ShowAccount godoc
+//
+//	@Summary		列表
+//	@Description	获取文章列表
+//	@Tags			文章
+//	@Accept			json
+//	@Produce		json
+//	@Param			tag_id	path		string	false	"标签id(tag_id必须大于0)"
+//	@Param			state	path		int	false	"状态(只允许0或1) "
+//	@Param			page	path		int	false	"起始页"
+//	@Success		200 {string} json "{"code":200,"data":{},"msg":"ok"}"
+//	@Router			/api/v1/articles [get]
 func GetArticles(c *gin.Context) {
 	code := e.INVALID_PARAMS
 	data := make(map[string]interface{})
@@ -70,6 +92,22 @@ func GetArticles(c *gin.Context) {
 	})
 
 }
+
+// ShowAccount godoc
+//
+//	@Summary		新增
+//	@Description	新增文章
+//	@Tags			文章
+//	@Accept			json
+//	@Produce		json
+//	@Param			title	path		string	true	"标题"
+//	@Param			content	path		string	true	"内容"
+//	@Param			desc	path		string	true	"简介"
+//	@Param			created_by	path		string	true	"创建人"
+//	@Param			tag_id	path		string	true	"标签id(tag_id必须大于0)"
+//	@Param			state	path		int	true	"状态(只允许0或1) "
+//	@Success		200 {string} json "{"code":200,"data":{},"msg":"ok"}"
+//	@Router			/api/v1/articles [post]
 func AddArticle(c *gin.Context) {
 	tagId := com.StrTo(c.Query("tag_id")).MustInt()
 	title := c.Query("title")
@@ -115,6 +153,22 @@ func AddArticle(c *gin.Context) {
 	})
 
 }
+
+// ShowAccount godoc
+//
+//	@Summary		编辑
+//	@Description	编辑文章
+//	@Tags			文章
+//	@Accept			json
+//	@Produce		json
+//	@Param			tag_id	path		string	true	"标签id(tag_id必须大于0)"
+//	@Param			title	path		string	true	"标题(最长为100字符)"
+//	@Param			content	path		string	true	"内容(最长为65535字符)"
+//	@Param			desc	path		string	true	"简介"
+//	@Param			modified_by	path		string	true	"修改人(最长为100字符)"
+//	@Param			state	path		int	true	"状态(只允许0或1) "
+//	@Success		200 {string} json "{"code":200,"data":{},"msg":"ok"}"
+//	@Router			/api/v1/articles/:id [put]
 func EditArticle(c *gin.Context) {
 	id := com.StrTo(c.Param("id")).MustInt()
 	tagId := com.StrTo(c.Query("tag_id")).MustInt()
@@ -180,6 +234,16 @@ func EditArticle(c *gin.Context) {
 	})
 
 }
+
+// ShowAccount godoc
+//
+//	@Summary		删除
+//	@Description	删除文章
+//	@Tags			文章
+//	@Accept			json
+//	@Produce		json
+//	@Success		200 {string} json "{"code":200,"data":{},"msg":"ok"}"
+//	@Router			/api/v1/articles/:id [delete]
 func DeleteArticle(c *gin.Context) {
 	id := com.StrTo(c.Param("id")).MustInt()
 	valid := validation.Validation{}

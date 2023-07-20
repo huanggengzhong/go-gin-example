@@ -1,6 +1,153 @@
 info:
   contact: {}
 paths:
+  /api/v1/articles:
+    get:
+      consumes:
+      - application/json
+      description: 获取文章列表
+      parameters:
+      - description: 标签id(tag_id必须大于0)
+        in: path
+        name: tag_id
+        type: string
+      - description: '状态(只允许0或1) '
+        in: path
+        name: state
+        type: integer
+      - description: 起始页
+        in: path
+        name: page
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{},"msg":"ok"}'
+          schema:
+            type: string
+      summary: 列表
+      tags:
+      - 文章
+    post:
+      consumes:
+      - application/json
+      description: 新增文章
+      parameters:
+      - description: 标题
+        in: path
+        name: title
+        required: true
+        type: string
+      - description: 内容
+        in: path
+        name: content
+        required: true
+        type: string
+      - description: 简介
+        in: path
+        name: desc
+        required: true
+        type: string
+      - description: 创建人
+        in: path
+        name: created_by
+        required: true
+        type: string
+      - description: 标签id(tag_id必须大于0)
+        in: path
+        name: tag_id
+        required: true
+        type: string
+      - description: '状态(只允许0或1) '
+        in: path
+        name: state
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{},"msg":"ok"}'
+          schema:
+            type: string
+      summary: 新增
+      tags:
+      - 文章
+  /api/v1/articles/:id:
+    delete:
+      consumes:
+      - application/json
+      description: 删除文章
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{},"msg":"ok"}'
+          schema:
+            type: string
+      summary: 删除
+      tags:
+      - 文章
+    get:
+      consumes:
+      - application/json
+      description: 文章详情
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{},"msg":"ok"}'
+          schema:
+            type: string
+      summary: 详情
+      tags:
+      - 文章
+    put:
+      consumes:
+      - application/json
+      description: 编辑文章
+      parameters:
+      - description: 标签id(tag_id必须大于0)
+        in: path
+        name: tag_id
+        required: true
+        type: string
+      - description: 标题(最长为100字符)
+        in: path
+        name: title
+        required: true
+        type: string
+      - description: 内容(最长为65535字符)
+        in: path
+        name: content
+        required: true
+        type: string
+      - description: 简介
+        in: path
+        name: desc
+        required: true
+        type: string
+      - description: 修改人(最长为100字符)
+        in: path
+        name: modified_by
+        required: true
+        type: string
+      - description: '状态(只允许0或1) '
+        in: path
+        name: state
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{},"msg":"ok"}'
+          schema:
+            type: string
+      summary: 编辑
+      tags:
+      - 文章
   /api/v1/auth:
     get:
       consumes:
@@ -41,6 +188,10 @@ paths:
         in: path
         name: state
         type: integer
+      - description: 起始页
+        in: path
+        name: page
+        type: integer
       produces:
       - application/json
       responses:
@@ -50,7 +201,7 @@ paths:
             type: string
       summary: 列表
       tags:
-      - 标签接口
+      - 标签
     post:
       consumes:
       - application/json
@@ -82,6 +233,20 @@ paths:
       tags:
       - 标签
   /api/v1/tags/:id:
+    delete:
+      consumes:
+      - application/json
+      description: 删除标签
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{},"msg":"ok"}'
+          schema:
+            type: string
+      summary: 删除
+      tags:
+      - 标签
     put:
       consumes:
       - application/json

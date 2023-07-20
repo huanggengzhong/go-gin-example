@@ -17,11 +17,12 @@ import (
 //
 //	@Summary		列表
 //	@Description	获取标签列表
-//	@Tags			标签接口
+//	@Tags			标签
 //	@Accept			json
 //	@Produce		json
 //	@Param			name	path		string	false	"标签名"
 //	@Param			state	path		int	false	"状态"
+//	@Param			page	path		int	false	"起始页"
 //	@Success		200 {string} json "{"code":200,"data":{},"msg":"ok"}"
 //	@Router			/api/v1/tags [get]
 func GetTags(c *gin.Context) {
@@ -156,6 +157,16 @@ func EditTag(c *gin.Context) {
 	})
 
 }
+
+// ShowAccount godoc
+//
+//	@Summary		删除
+//	@Description	删除标签
+//	@Tags			标签
+//	@Accept			json
+//	@Produce		json
+//	@Success		200 {string} json "{"code":200,"data":{},"msg":"ok"}"
+//	@Router			/api/v1/tags/:id [delete]
 func DeleteTag(c *gin.Context) {
 	id := com.StrTo(c.Param("id")).MustInt()
 	valid := validation.Validation{}
