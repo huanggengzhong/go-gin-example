@@ -75,3 +75,8 @@ docker start/stop 影像NAMES
 
 查看文件夹路径
 pwd
+
+模拟定时任务删除
+```js
+go run cron.go
+```

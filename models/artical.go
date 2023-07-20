@@ -66,6 +66,12 @@ func DeleteArticle(id int) bool {
 	return true
 }
 
+func CleanAllArticle() bool {
+	db.Unscoped().Where("deleted_on != ? ", 0).Delete(&Article{})
+
+	return true
+}
+
 // func (tag *Article) BeforeCreate(scope *gorm.Scope) error {
 // 	scope.SetColumn("CreatedOn", time.Now().Unix())
 // 	return nil

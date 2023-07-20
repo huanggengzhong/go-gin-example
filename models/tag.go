@@ -56,6 +56,12 @@ func DeleteTag(id int) bool {
 	return true
 }
 
+func CleanAllTag() bool {
+	db.Unscoped().Where("deleted_on != ? ", 0).Delete(&Tag{})
+
+	return true
+}
+
 // gorm所支持的自动回调方法：
 
 // 创建：BeforeSave、BeforeCreate、AfterCreate、AfterSave
