@@ -9,10 +9,13 @@ require (
 	github.com/gin-gonic/gin v1.9.1
 	github.com/go-ini/ini v1.67.0
 	github.com/jinzhu/gorm v1.9.16
+	github.com/robfig/cron v1.2.0
 	github.com/swaggo/files v1.0.1
 	github.com/swaggo/gin-swagger v1.2.0
 	github.com/swaggo/swag v1.16.1
 	github.com/unknwon/com v1.0.1
+	gopkg.in/ini.v1 v1.67.0
+	gorm.io/gorm v1.25.3
 )
 
 require (
@@ -36,6 +39,7 @@ require (
 	github.com/go-sql-driver/mysql v1.7.1 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
+	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.5 // indirect
@@ -45,7 +49,6 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.8 // indirect
-	github.com/robfig/cron v1.2.0 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/shiena/ansicolor v0.0.0-20230509054315-a9deabde6e02 // indirect
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
@@ -72,6 +75,7 @@ replace (
 	github.com/huanggengzhong/go-gin-example/middleware => /Users/luogengzhong/Documents/study/01-go-learn/11-go-gin-example/middleware
 	github.com/huanggengzhong/go-gin-example/models => /Users/luogengzhong/Documents/study/01-go-learn/11-go-gin-example/models
 	github.com/huanggengzhong/go-gin-example/pkg/e => /Users/luogengzhong/Documents/study/01-go-learn/11-go-gin-example/pkg/e
+	github.com/huanggengzhong/go-gin-example/pkg/file => /Users/luogengzhong/Documents/study/01-go-learn/11-go-gin-example/pkg/file
 	github.com/huanggengzhong/go-gin-example/pkg/logging => /Users/luogengzhong/Documents/study/01-go-learn/11-go-gin-example/pkg/logging
 	github.com/huanggengzhong/go-gin-example/pkg/setting => /Users/luogengzhong/Documents/study/01-go-learn/11-go-gin-example/pkg/setting
 	github.com/huanggengzhong/go-gin-example/pkg/util => /Users/luogengzhong/Documents/study/01-go-learn/11-go-gin-example/pkg/util
