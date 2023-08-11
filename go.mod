@@ -80,6 +80,9 @@ replace (
 	github.com/huanggengzhong/go-gin-example/pkg/setting => /Users/luogengzhong/Documents/study/01-go-learn/11-go-gin-example/pkg/setting
 	github.com/huanggengzhong/go-gin-example/pkg/util => /Users/luogengzhong/Documents/study/01-go-learn/11-go-gin-example/pkg/util
 	github.com/huanggengzhong/go-gin-example/pkg/upload => /Users/luogengzhong/Documents/study/01-go-learn/11-go-gin-example/pkg/upload
+	github.com/huanggengzhong/go-gin-example/pkg/gredis => /Users/luogengzhong/Documents/study/01-go-learn/11-go-gin-example/pkg/gredis
+	github.com/huanggengzhong/go-gin-example/pkg/app => /Users/luogengzhong/Documents/study/01-go-learn/11-go-gin-example/pkg/app
+	github.com/huanggengzhong/go-gin-example/service/cache_service => /Users/luogengzhong/Documents/study/01-go-learn/11-go-gin-example/service/cache_service
 
 	github.com/huanggengzhong/go-gin-example/routers => /Users/luogengzhong/Documents/study/01-go-learn/11-go-gin-example/routers
 )
