@@ -1,6 +1,10 @@
 package routers
 
 import (
+	"net/http"
+
+	"github.com/huanggengzhong/go-gin-example/pkg/upload"
+
 	"github.com/gin-gonic/gin"
 
 	docs "github.com/huanggengzhong/go-gin-example/docs"
@@ -27,6 +31,8 @@ func InitRouter() *gin.Engine {
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
 	gin.SetMode(setting.ServerSetting.RunMode)
+	// 静态文件访问
+	r.StaticFS("/upload/images", http.Dir(upload.GetImageFullPath()))
 	//获取token
 	r.GET("/auth", api.GetAuth)
 	// swag
