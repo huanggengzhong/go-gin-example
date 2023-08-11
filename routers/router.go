@@ -29,6 +29,10 @@ func InitRouter() *gin.Engine {
 	gin.SetMode(setting.ServerSetting.RunMode)
 	//获取token
 	r.GET("/auth", api.GetAuth)
+	// swag
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	// 上传
+	r.POST("/upload", api.UploadImage)
 
 	// 路由分组
 	apiv1 := r.Group("/api/v1")
@@ -48,8 +52,6 @@ func InitRouter() *gin.Engine {
 		apiv1.PUT("/articles/:id", v1.EditArticle)
 		apiv1.DELETE("/articles/:id", v1.DeleteArticle)
 	}
-	//swag
-	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	return r
 }

@@ -413,6 +413,38 @@
                     }
                 }
             }
+        },
+        "/upload": {
+            "post": {
+                "description": "上传图片",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "通用"
+                ],
+                "summary": "上传",
+                "parameters": [
+                    {
+                        "type": "file",
+                        "description": "Image File",
+                        "name": "image",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{\"code\":200,\"data\":{\"token\":\"xx\"},\"msg\":\"ok\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
         }
     }
 }

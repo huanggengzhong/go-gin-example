@@ -277,4 +277,25 @@ paths:
       summary: 编辑
       tags:
       - 标签
+  /upload:
+    post:
+      consumes:
+      - application/json
+      description: 上传图片
+      parameters:
+      - description: Image File
+        in: formData
+        name: image
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{"token":"xx"},"msg":"ok"}'
+          schema:
+            type: string
+      summary: 上传
+      tags:
+      - 通用
 swagger: "2.0"
